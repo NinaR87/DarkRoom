@@ -1,7 +1,10 @@
 //Modules
 const { Client, Collection } = require("discord.js");
-const config = require("./config.json"); //loading config file with token and prefix
-const prefix = (config.prefix); //defining the prefix as a constant variable
+// Importing this allows you to access the environment variables of the running node process
+require('dotenv').config();
+
+const prefix = (process.env.PREFIX); //defining the prefix as a constant variable
+
 const fs = require("fs"); //this package is for reading files and getting their inputs
 
 const client = new Client({
@@ -88,4 +91,4 @@ client.on("message", async message => {
     
 });
 
-client.login(config.token); //login into the bot
+client.login(process.env.CLIENT_TOKEN); //login into the bot
