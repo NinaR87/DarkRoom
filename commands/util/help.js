@@ -1,6 +1,6 @@
 const { MessageEmbed } = require("discord.js");
 const { stripIndents } = require("common-tags");
-require('dotenv').config();
+const config = require("../../config.json")
 
 module.exports = {
   name: "help",
@@ -21,10 +21,10 @@ module.exports = {
 
 function getAll(client, message) {
   const embed = new MessageEmbed()
-    .setColor(process.env.COLOR)
+    .setColor(config.color)
     .setThumbnail(client.user.displayAvatarURL())
     .setTitle("HELP MENU")
-    .setFooter(`TO see command descriptions and inforamtion, type: ${process.env.PREFIX}help [CMD NAME]`, client.user.displayAvatarURL())
+    .setFooter(`TO see command descriptions and inforamtion, type: ${config.prefix}help [CMD NAME]`, client.user.displayAvatarURL())
   const commands = (category) => {
     return client.commands.filter(cmd => cmd.category === category)
       .map(cmd => `\`${cmd.name}\``).join(", ")
@@ -52,9 +52,9 @@ function getCMD(client, message, input) {
     embed.addField("**Cooldown**", `\`1 Second\``)
  
   if (cmd.usage) {
-    embed.addField("**Usage**", `\`${process.env.PREFIX}${cmd.usage}\``);
+    embed.addField("**Usage**", `\`${config.prefix}${cmd.usage}\``);
     embed.setFooter("Syntax: <> = required, [] = optional");
   }
 
-  return message.channel.send(embed.setColor(process.env.COLOR))
+  return message.channel.send(embed.setColor(config.color))
 }

@@ -1,5 +1,5 @@
 const { MessageEmbed } = require("discord.js");
-require('dotenv').config();
+const config = require("../../config.json")
 
 module.exports = {
   name: "avatar",
@@ -17,7 +17,7 @@ module.exports = {
     embed.setTitle(`Avatar de ${user.tag}`)
          .setDescription(`Clique **[aqui](${user.displayAvatarURL()})** para baixar a imagem!`)
          .setImage(user.displayAvatarURL())
-         .setColor(process.env.COLOR)
+         .setColor(config.color)
          .setTimestamp()
          .setFooter(message.author.username, message.author.displayAvatarURL())
 

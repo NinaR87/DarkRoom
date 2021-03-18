@@ -1,5 +1,5 @@
 const { MessageEmbed } = require("discord.js");
-require('dotenv').config();
+const config = require("../../config.json")
 
 module.exports = {
   name: "vmsg",
@@ -38,7 +38,7 @@ module.exports = {
     embed.setTitle(`Você foi verificado por ${message.author.tag}`)
          .setDescription(conteudo)
          //.setImage(user.displayAvatarURL())
-         .setColor(process.env.COLOR)
+         .setColor(config.color)
          .setTimestamp()
          //.setFooter(message.author.username, message.author.displayAvatarURL())
 
