@@ -88,7 +88,6 @@ client.on("message", async message => {
     } 
     else //if the command is not found send an info msg
     return message.reply(`Unkown command, try: **\`${prefix}help\`**`)
-    
 });
 
 client.login(process.env.CLIENT_TOKEN); //login into the bot
